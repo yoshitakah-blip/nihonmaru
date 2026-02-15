@@ -207,22 +207,84 @@ nav a:hover {
   padding-top: 160px;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #f8faff 0%, #e6f0ff 100%);
   position: relative;
   overflow: hidden;
+  color: white;
+  /* Make text white for better contrast */
 }
 
-.hero::before {
-  content: '';
+/* Slideshow Container */
+.hero-slideshow {
   position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 50%;
-  height: 120%;
-  background: white;
-  transform: skewX(-15deg);
-  z-index: 0;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.02);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+/* Individual Slide */
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: slideShow 15s infinite;
+}
+
+/* Slide Animation Timing */
+.hero-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.hero-slide:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.hero-slide:nth-child(3) {
+  animation-delay: 10s;
+}
+
+@keyframes slideShow {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  33% {
+    opacity: 1;
+  }
+
+  38% {
+    opacity: 0;
+    transform: scale(1.05);
+    /* Subtle zoom effect */
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Dark Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  /* Darken background by 40% */
+  z-index: -1;
 }
 
 .hero-flex {
@@ -265,22 +327,21 @@ nav a:hover {
   border: 1px solid #ddd;
 }
 
+
 .hero h1 {
   font-size: 4rem;
   margin-bottom: 25px;
-  color: var(--primary-color);
+  color: white;
   line-height: 1.1;
-  background: linear-gradient(to right, var(--primary-color), #0066cc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
   font-size: 1.25rem;
   margin-bottom: 40px;
-  color: var(--text-color);
+  color: #f0f0f0;
   max-width: 600px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-btns {
